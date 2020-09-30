@@ -1,0 +1,32 @@
+image: docker
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  only:
+    - master
+  script:
+    - set -e
+    - |
+      echo "BOT_KEY=${BOT_KEY}" >> .env
+  artifacts:
+    paths:
+    - .env
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  script:
+    - sudo docker image prune -f
+    - docker build -t english-random -f Dockerfile .
+    - docker ps -q --filter "name=english-random-container" | grep -q . && docker stop english-random-container
+    - docker run -d --name english-random-container --rm english-random
+  dependencies:
+    - build

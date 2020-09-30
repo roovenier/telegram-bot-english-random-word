@@ -1,0 +1,11 @@
+{
+    "apps" : [
+        {
+            "merge_logs"  : true,
+            "name"        : "app",
+            "script"      : "index.js",
+            "out_file"    : "/tmp/app.log",
+            "log_date_format" : "MM/DD/YYYY HH:mm:ss"
+        }
+    ]
+}

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "pm2 start --no-daemon processes.json"
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +13,8 @@
     "dotenv": "^8.2.0",
     "fast-csv": "^4.3.2",
     "telegraf": "^3.38.0"
+  },
+  "devDependencies": {
+    "pm2": "^4.5.0"
   }
 }
