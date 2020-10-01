@@ -19,7 +19,7 @@ const main = async () => {
 
     const bot = new Telegraf(process.env.BOT_KEY)
     bot.start((ctx) => ctx.reply('Welcome!\n\nThere are following commands you can use:\n*word*: show random word', Extra.markdown()))
-    bot.hears('word', (ctx) => {
+    bot.hears(/^word$/i, (ctx) => {
         const randomNumber = Math.floor(Math.random() * (2999 - 0) + 0);
         const word = words[randomNumber];
 
